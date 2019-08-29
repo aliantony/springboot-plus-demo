@@ -4,6 +4,7 @@ import com.example.entity.Currency;
 import com.example.entity.OtherInfo;
 import com.example.entity.User;
 import com.example.entity.Wallet;
+import com.example.enums.AgeEnum;
 import com.example.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -52,5 +53,17 @@ public class SampleTest {
         Jone.setOtherInfo(info);
         Jone.setId(11L);
         userMapper.insert(Jone);
+    }
+
+    @Test
+    public void testFill() {
+        //User Jone = userMapper.selectById(1);
+        //Jone.setName("王五");
+        //userMapper.updateById(Jone);
+        User u =  new User();
+        u.setName("张素");
+        u.setId(12L);
+        u.setAge(AgeEnum.THREE);
+        userMapper.insert(u);
     }
 }

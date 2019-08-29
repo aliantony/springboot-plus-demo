@@ -1,5 +1,6 @@
 package com.example.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
@@ -63,5 +64,11 @@ public class User extends BaseEntity {
 
     @TableField(typeHandler = FastjsonTypeHandler.class)
     private OtherInfo otherInfo;
+
+    /**
+     * 插入、更新、插入和更新要被填充的字段
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String operator;
 
 }
