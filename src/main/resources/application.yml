@@ -39,7 +39,7 @@ spring:
     add-properties: false
 logging:
   level:
-    root: info
+    com.example: debug
 mybatis-plus:
   type-enums-package: com.example.enums
   configuration:
