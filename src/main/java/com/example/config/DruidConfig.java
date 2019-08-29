@@ -17,9 +17,9 @@ import java.util.Map;
 @Configuration
 public class DruidConfig {
 
-    @ConfigurationProperties(prefix="spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     @Bean
-    public DataSource durid(){
+    public DataSource durid() {
         return new DruidDataSource();
     }
 
@@ -27,9 +27,9 @@ public class DruidConfig {
 
     //1.配置一个管理后台的sevlet
     @Bean
-    public ServletRegistrationBean<StatViewServlet> statViewServlet(){
-        ServletRegistrationBean<StatViewServlet> bean = new ServletRegistrationBean<StatViewServlet>(new StatViewServlet(),"/druid/*");
-        Map<String,String> initParams = new HashMap<String,String>();
+    public ServletRegistrationBean<StatViewServlet> statViewServlet() {
+        ServletRegistrationBean<StatViewServlet> bean = new ServletRegistrationBean<StatViewServlet>(new StatViewServlet(), "/druid/*");
+        Map<String, String> initParams = new HashMap<String, String>();
         initParams.put("loginUsername", "admin");
         initParams.put("loginPassword", "123456");
         //设置ip白名单
@@ -42,10 +42,10 @@ public class DruidConfig {
 
     //2.配置一个web监控的filter
     @Bean
-    public FilterRegistrationBean<WebStatFilter> webStatFilter(){
+    public FilterRegistrationBean<WebStatFilter> webStatFilter() {
         FilterRegistrationBean<WebStatFilter> bean = new FilterRegistrationBean<WebStatFilter>();
         bean.setFilter(new WebStatFilter());
-        Map<String,String> initParams = new HashMap<String,String>();
+        Map<String, String> initParams = new HashMap<String, String>();
         //忽略过滤的形式
         initParams.put("exclusions", "*.js,*.css,/druid/*");
         bean.setInitParameters(initParams);
