@@ -37,6 +37,19 @@ spring:
       web-stat-filter.exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
   devtools:
     add-properties: false
+  mail:
+    host: smtp.qq.com
+    username: 1111111111@qq.com
+    password: xtzhykzecp # 注意此处是授权码非密码，前往QQ邮箱设置开启SMTP和POP3获得
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    #mail.smtp.auth=true;mail.smtp.starttls.enable=true;mail.smtp.starttls.required=true
+
 logging:
   level:
     com.example: debug
