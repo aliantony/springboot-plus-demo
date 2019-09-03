@@ -19,8 +19,8 @@ import lombok.experimental.Accessors;
  * 用户实体对应表 user
  * </p>
  *
- * @author hubin
- * @since 2018-08-11
+ * @author wangqian
+ * @since 2019-08-11
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
