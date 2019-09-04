@@ -1,5 +1,7 @@
 package com.example;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -37,6 +39,21 @@ public class DemoApplication {
             //等待关闭的时间
             executor.setAwaitTerminationSeconds(10);
             return executor;
+        }
+    }
+
+    @Bean
+    public DataLoader dataLoader() {
+        return new DataLoader();
+    }
+
+    @Slf4j
+    static class DataLoader implements CommandLineRunner {
+
+        @Override
+        public void run(String... strings) throws Exception {
+            log.info("loading order: prepared -> started -> command-line -> read");
+            log.info("Loading data...");
         }
     }
 
