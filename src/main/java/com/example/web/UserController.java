@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.web;
 
 import com.example.entity.User;
 import com.example.mapper.UserMapper;

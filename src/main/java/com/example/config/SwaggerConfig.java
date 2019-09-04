@@ -31,7 +31,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 //根据包名过滤接口
-                .apis(RequestHandlerSelectors.basePackage("com.example.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.web"))
                 //根据接口url过滤
                 .paths(PathSelectors.any())
                 .build().apiInfo(apiInfo()).useDefaultResponseMessages(false)
