@@ -39,6 +39,10 @@ public class User extends BaseEntity {
      */
     private AgeEnum age;
 
+    private String sex;
+
+    private String birthday;
+
     /**
      * 原生枚举： 默认使用枚举值顺序： 0：MALE， 1：FEMALE
      */

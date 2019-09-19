@@ -52,6 +52,8 @@ spring:
   aop:
     auto: true
     proxy-target-class: true # 使用CGLIB代理目标类，否则使用Java代码
+  main:
+    allow-bean-definition-overriding: true
 
 logging:
   level:
