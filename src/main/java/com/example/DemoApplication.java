@@ -1,11 +1,13 @@
 package com.example;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.filters.RequestDumperFilter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
@@ -40,6 +42,16 @@ public class DemoApplication {
             executor.setAwaitTerminationSeconds(10);
             return executor;
         }
+    }
+
+    /**
+     * 为测试环境添加相关的 Request Dumper information，便于调试
+     * @return
+     */
+    @Profile("!cloud")
+    @Bean
+    RequestDumperFilter requestDumperFilter() {
+        return new RequestDumperFilter();
     }
 
     @Bean
