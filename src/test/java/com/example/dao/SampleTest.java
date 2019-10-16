@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import com.example.entity.User;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +24,13 @@ public class SampleTest {
         List<User> userList = userMapper.selectList(null);
         Assert.assertEquals(5, userList.size());
         userList.forEach(System.out::println);
+    }
+
+    public static void main(String[] args) {
+       String x = "001001001002";
+       StringBuilder b = new StringBuilder(x);
+        System.out.println(b.replace(x.length() - 3, x.length(), "113").toString());
+
     }
 
 }
