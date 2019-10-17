@@ -29,6 +29,11 @@ public class ThreeSum {
             int R = len - 1;
             while (L < R) {
                 int sum = arr[i] + arr[L] + arr[R];
+                if (arr[i] == arr[L] || arr[i] == arr[R] || arr[L] ==arr[R]) {
+                    L++;
+                    R--;
+                    continue;
+                }
                 if (sum == 0) {
                     ans.add(Arrays.asList(arr[i], arr[L], arr[R]));
                     while (L<R && arr[L] == arr[L+1]) {
