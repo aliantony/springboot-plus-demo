@@ -65,3 +65,7 @@ mybatis-plus:
     # 如果项目之中实体统一使用IEnum或注解的方式,可配置成 com.baomidou.mybatisplus.extension.handlers.EnumTypeHandler,也可省略上面的type-enums-package配置
     # 配置type-enums-package只对注解方式的枚举处理能提前加载缓存.
     default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+ent:
+  aliasMap:
+    entA: entAStrategy
+    entB: entBStrategy
