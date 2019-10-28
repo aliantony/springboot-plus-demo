@@ -4,6 +4,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class JavaConfigTest {
     public static void main(String[] arg) {
         /**
+         * https://www.cnblogs.com/ashleyboy/p/9662119.html
+         * 是一个用来管理注解bean的容器
          * 使用AnnotationConfigApplicationContext可以实现基于Java的配置类加载Spring的应用上下文。
          * 避免使用application.xml进行配置。相比XML配置，更加便捷
          */
