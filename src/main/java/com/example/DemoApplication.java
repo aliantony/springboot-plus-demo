@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.spring.CustomizeApplicationContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.filters.RequestDumperFilter;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +20,10 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        //SpringApplication.run(DemoApplication.class, args);
+        SpringApplication springApplication = new SpringApplication(DemoApplication.class);
+        springApplication.setApplicationContextClass(CustomizeApplicationContext.class);
+        springApplication.run(args);
     }
 
     /**
