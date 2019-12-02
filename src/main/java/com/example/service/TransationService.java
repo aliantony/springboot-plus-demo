@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  * PlatformTransactionManager定义了通用的事务操作行为，其依赖TransactionDefinition和TransactionStatus接口
  * PlatformTransactionManager的实现有，DataSourceTransactionManager，JtaTransactionManager（需要web容器支持，weblogic,websphre可以支持）
  * tomcat需要开源框架，有基于JTA的atomiko
+ * 基于数据库XA协议的JTA（JAVA TRANSACTION API）事务实现原理，参考https://juejin.im/post/5b83b8756fb9a019ff71389d
  */
 @Service
 public class TransationService {
