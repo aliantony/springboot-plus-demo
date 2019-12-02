@@ -8,15 +8,22 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 @SpringBootApplication
 @EnableAsync
+@EnableTransactionManagement()
+/**解决prent调用child（REQUIRES_NEW）时由于动态代理导致内部事务失效
+ *实现内部事务回滚，外部事务正常提交
+ **/
+@EnableAspectJAutoProxy(exposeProxy = true)
 public class DemoApplication {
 
     public static void main(String[] args) {
