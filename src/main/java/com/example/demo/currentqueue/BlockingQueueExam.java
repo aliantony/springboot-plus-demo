@@ -1,0 +1,77 @@
+package com.example.demo.currentqueue;
+
+import java.util.Random;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class BlockingQueueExam {
+    public static void main(String[] args) throws InterruptedException {
+        BlockingQueue<String> blockingQueue = new LinkedBlockingQueue<>(3);
+        ExecutorService service = Executors.newCachedThreadPool();
+        for (int i = 0; i < 5; i++) {
+            service.submit(new Producer("Producer" + i, blockingQueue));
+        }
+        for (int i = 0; i < 5; i++) {
+            service.submit(new Consumer("Consumer" + i, blockingQueue));
+        }
+        service.shutdown();
+    }
+}
+
+class Producer implements Runnable {
+    private final String name;
+    private final BlockingQueue<String> blockingQueue;
+    private static Random rand = new Random(47);
+    private static AtomicInteger productID = new AtomicInteger(0);
+
+    Producer(String name, BlockingQueue<String> blockingQueue) {
+        this.name = name;
+        this.blockingQueue = blockingQueue;
+    }
+
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                TimeUnit.SECONDS.sleep(rand.nextInt(5));
+                String str = "Product" + productID.getAndIncrement();
+                blockingQueue.add(str);
+                //注意，这里得到的size()有可能是错误的
+                System.out.println(name + " product " + str + ", queue size = " + blockingQueue.size());
+            }
+            System.out.println(name + " is over");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Consumer implements Runnable {
+    private final String name;
+    private final BlockingQueue<String> blockingQueue;
+    private static Random rand = new Random(47);
+
+    Consumer(String name, BlockingQueue<String> blockingQueue) {
+        this.name = name;
+        this.blockingQueue = blockingQueue;
+    }
+
+    @Override
+    public void run() {
+        try {
+            for (int i = 0; i < 10; i++) {
+                //TimeUnit.SECONDS.sleep(rand.nextInt(5));
+                String str = blockingQueue.take();
+                //注意，这里得到的size()有可能是错误的
+                System.out.println(name + " consume " + str + ", queue size = " + blockingQueue.size());
+            }
+            System.out.println(name + " is over");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
