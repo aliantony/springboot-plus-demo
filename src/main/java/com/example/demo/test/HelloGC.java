@@ -9,7 +9,7 @@ public class HelloGC {
     List list = new LinkedList();
     for(;;) {
       byte[] b = new byte[1024*1024];
-      list.add(b);
+      //list.add(b);
     }
   }
 }
