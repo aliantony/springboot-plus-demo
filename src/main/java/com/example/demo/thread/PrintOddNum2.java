@@ -29,7 +29,7 @@ public class PrintOddNum2 {
                         } else {
                             lock.notifyAll();
                             try {
-                                if (i <= TOTAL) {
+                                if (i < TOTAL) {
                                     lock.wait();
                                 }
                             } catch (InterruptedException e) {
@@ -48,7 +48,11 @@ public class PrintOddNum2 {
                 while (i <= TOTAL) {
                     synchronized (lock) {
                         if (i % 2 == 0) {
+                            // 优化，打印完100后通知奇数线程，避免阻塞
                             System.out.println(Thread.currentThread().getName() + "打印：  " + i++);
+                            if (i == TOTAL) {
+                                lock.notify();
+                            }
                         } else {
                             lock.notifyAll();
                             try {
