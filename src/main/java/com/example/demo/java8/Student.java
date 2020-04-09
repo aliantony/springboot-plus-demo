@@ -1,4 +1,7 @@
 package com.example.demo.java8;
+
+import lombok.Builder;
+
 /**
  * @program demo1
  * @description 
@@ -6,6 +9,7 @@ package com.example.demo.java8;
  * created on 2019-09-18
  * @version  1.0.0
  */
+@Builder
 public class Student {
     private String name = "zhangsan";
     private Integer age = 39;

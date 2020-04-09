@@ -16,5 +16,7 @@ public class BuilderDemo {
                 .with(GirlFriend::setName, "小美")
                 .with(GirlFriend::setBirthday, 18).build();
                 //.with(GirlFriend::set, 33, 23, 33);
+        //lombok builder
+        Student zs = Student.builder().name("张三").age(18).score(99).build();
     }
 }
