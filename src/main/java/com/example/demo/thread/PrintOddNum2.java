@@ -24,7 +24,7 @@ public class PrintOddNum2 {
             public void run() {
                 while (i <= TOTAL) {
                     synchronized (lock) {
-                        if (i % 2 == 1) {
+                        if (i % 2 == 1 && i <= TOTAL) {
                             System.out.println(Thread.currentThread().getName() + "打印：   " + i++);
                         } else {
                             lock.notifyAll();
