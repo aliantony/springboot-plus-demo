@@ -2,6 +2,7 @@ package com.example.web;
 
 import com.example.dto.ResponseResult;
 import com.example.entity.Novel;
+import com.example.service.MenuService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/novels")
 @ResponseResult
 public class NovelController {
+
+    private MenuService menuService;
 
     @GetMapping("{id}")
     public Novel getNovel(@PathVariable("id") Long id) {
